@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+h1{text-align:center;}
+div{text-align:center;}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Add new Student</title>
+</head>
+<body>
+    <form action="/new_student" method="post">
+        <h1>Student attendance</h1>
+        <div>
+        ID: <input type="text" name="std_id"><br><br>
+        First Name: <input type="text" name="first_name"><br><br>
+        Last Name: <input type="text" name="last_name"><br><br>
+        Contact: <input type="text" name="phone"><br><br>
+        Div: <input type="text" name="div"><br><br>
+        Password: <input type="password" name="pas"><br><br>
+        <button type="submit">Submit</button>
+        </div>
+    </form>
+    {%if result%}
+    <center>
+    <p> Added succesfully </p>
+    <p> {{result}} </p>
+    {%endif%}
+    </center>
+    {%if result2%}
+    <center>
+    <p> {{result2}} </p>
+    {%endif%}
+    </center>
+
+</body>
+</html>

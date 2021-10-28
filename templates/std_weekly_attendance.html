@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+h1{text-align:center;}
+div{text-align:center;}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Weekly attendance</title>
+</head>
+<body>
+    <form action="/std_weekly_attendance" method="post">
+        <h1>Weekly Attendance</h1>
+        <div>
+        ID: <input type="text" name="id_to_mark"><br><br>
+        Start : <input type="text" name="start"><br><br>
+        End : <input type="text" name="end"><br><br>
+        Month : <input type="text" name="month"><br><br>
+        <button type="submit">Submit</button><br><br>
+        </div>
+    </form>
+{% if output %}
+<table align="center" style="width:60%" border="2" cellspacing="2" cellpadding="2">
+        <tr>
+            <th>Employee ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date</th>
+            <th>Time<br></th>
+        </tr>
+        {% for data in output %}
+            <tr>
+                <td>{{data[0]}}</td>
+                <td>{{data[1]}}</td>
+                <td>{{data[2]}}</td>
+                <td>{{data[3]}}</td>
+                <td>{{data[4]}}</td>
+            </tr>
+        {% endfor %}
+</table>
+{% endif %}
+{% if output1 %}
+<center>
+<h1> {{output1}} </h1>
+{%endif%}
+</center>
+</body>
+</html>

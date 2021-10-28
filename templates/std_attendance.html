@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+h1{text-align:center;}
+div{text-align:center;}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Student attendance</title>
+</head>
+<body>
+    <form action="/std_attendance" method="post">
+        <h1>Student attendance</h1>
+        <div>
+        ID: <input type="text" name="id_to_mark"><br><br>
+        Date: <input type="text" name="id_date"><br><br>
+        Month: <input type="text" name="id_month"><br><br>
+        <button type="submit">Submit</button>
+        </div>
+    </form>
+    {%if result%}
+    <center>
+    <h1> Student is present </h1>
+    <h2> {{result}} </h2>
+    {%endif%}
+    </center>
+    {%if result2%}
+    <center>
+    <h1> {{result2}} </h1>
+    {%endif%}
+    </center>
+</body>
+</html>
