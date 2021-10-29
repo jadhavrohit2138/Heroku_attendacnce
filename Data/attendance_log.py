@@ -53,6 +53,7 @@ def daily_attendance():
 		month = request.form.get("month")
 		with open('attendance.csv', 'r') as readFile:
 			reader = csv.reader(readFile)
+			found = False
 			heading =next(reader)
 			output = []
 			for row in reader:
@@ -61,9 +62,12 @@ def daily_attendance():
 				cr1_month = cr.split("/")[0]
 				cr1_day = cr.split("/")[1]
 				if date == cr1_day and month == cr1_month:
+					found = True
 					output.append(row)
-			else:
-				output1 = "Wrong Input"
+		if found == True:
+			pass
+		else:
+			output1 = f"Data is Not Available"
 
 	return render_template("daily_attendance.html", output=output, output1=output1)
 
