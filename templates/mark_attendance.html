@@ -12,20 +12,19 @@ div{text-align:center;}
     <form action="/mark_attendance" method="post">
         <h1>Mark The attendance</h1>
         <div>
-<!--        <label for ="Name">Enter student Id: </label>-->
-        Id:<input type="text" name="id_to_mark"><br><br>
+        ID: <input type="number"  min="1000" max="9999" name="id_to_mark"><br><br>
         Password:<input type="password" name="pas"><br><br>
         <button type="submit">Submit</button>
         </div>
     </form>
     {%if result1%}
     <center>
-    <p> id not found try again or password is wrong </p>
+    <h2> id not found or password is wrong </h2>
     {%endif%}
     </center>
     {%if result%}
     <center>
-    <p> Attendance marked of Id : {{result}}</p>
+    <h2> Attendance marked of Id : {{result}}</h2>
     {%endif%}
     </center>
 </body>

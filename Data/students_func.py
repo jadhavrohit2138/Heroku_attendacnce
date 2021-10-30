@@ -32,6 +32,7 @@ def to_csv():
 @student_api.route("/delete_std", methods=['GET', 'POST'])
 def delete_std():
 	result = ''
+	result2 = ''
 	if request.method == 'POST' and 'id_to_mark' in request.form and 'pas' in request.form:
 		id_to_mark = request.form.get("id_to_mark")
 		pas = request.form.get("pas")
@@ -52,11 +53,11 @@ def delete_std():
 			writer.writerows(lines)
 
 		if found == True:
-			result = f"Student Id : {id_to_mark} is Found and Deleted."
+			result = f"Student Id : {id_to_mark} is Deleted."
 		else:
-			print("Student id Not Found.")
+			result2 = f"Student Id : {id_to_mark}  Not Found."
 			# delete_std()
-	return render_template("delete_std.html", result=result)
+	return render_template("delete_std.html", result=result, result2=result2)
 
 
 @student_api.route("/list_student")

@@ -12,10 +12,10 @@ div{text-align:center;}
     <form action="/new_student" method="post">
         <h1>Student attendance</h1>
         <div>
-        ID: <input type="text" name="std_id"><br><br>
+        ID: <input type="number"  min="1000" max="9999" name="std_id"><br><br>
         First Name: <input type="text" name="first_name"><br><br>
         Last Name: <input type="text" name="last_name"><br><br>
-        Contact: <input type="text" name="phone"><br><br>
+        Contact: <input type="number" name="phone"><br><br>
         Div: <input type="text" name="div"><br><br>
         Password: <input type="password" name="pas"><br><br>
         <button type="submit">Submit</button>
