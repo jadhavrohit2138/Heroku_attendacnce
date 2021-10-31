@@ -13,7 +13,6 @@ def mark_attendance():
 	result = ''
 	result1 = ''
 	if request.method == 'POST' and 'id_to_mark' in request.form and 'pas' in request.form:
-		# id_to_mark = input("Enter your Student ID. Enter 'quit' to go back.\n Student ID: ")
 		id_to_mark = request.form.get("id_to_mark")
 		pas = request.form.get("pas")
 		lines = []
@@ -224,40 +223,18 @@ def std_weekly_attendance():
 
 @attendance_api.route("/total_report")
 def total_report():
-	# open csv file
 	a = open("attendance.csv", 'r')
-	# read the csv file
 	a = a.readlines()
-
 	# Separating the Headers
 	l1 = a[0]
 	l1 = l1.split(',')
-
 	# headers for table
 	t = PrettyTable([l1[0], l1[1], l1[2], l1[3], l1[4]])
-
 	# Adding the data
 	for i in range(1, len(a)):
 		t.add_row(a[i].split(','))
-
 	code = t.get_html_string()
 	html_file = open('/home/rohit/PycharmProjects/Fynd_Api/templates/total_report.html', 'w')
 	html_file = html_file.write(code)
 	return render_template("total_report.html")
 
-# # print(x.get_string(start=1, end=4))
-
-# for row_num, rows in enumerate(output):
-# 	cr_month = rows[1]
-# 	if month == row:
-# print(cr_month)
-
-# <!--    <ol>-->
-#     {%for i in output%}
-# <!--    <center>-->
-#         <p>{{i}}</p>
-#     {%endfor%}
-# <!--    </center>-->
-# <!--    </ol>-->
-
-# <html xmlns="http://www.w3.org/1999/html">
