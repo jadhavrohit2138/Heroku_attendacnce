@@ -18,8 +18,6 @@ from the list these are some addition features
 >pip install prettytable\
 >pip install gunicorn
 
-
-
 ## phase-1
 
 ### Task-1
