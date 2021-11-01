@@ -8,6 +8,7 @@ student_api = Blueprint("student_api", __name__)
 def to_csv():
 	result = ''
 	result2 = ''
+	result3 = ''
 	if request.method == 'POST' and 'std_id' in request.form and 'first_name' in request.form and 'last_name' in request.form and 'phone' in request.form and 'div' in request.form and 'pas' in request.form:
 		std_id = request.form.get("std_id")
 		first_name = request.form.get("first_name")
@@ -16,17 +17,28 @@ def to_csv():
 		div = request.form.get("div")
 		pas = request.form.get("pas")
 		if request.form.get("std_id", None) and request.form.get("first_name", None) and request.form.get("last_name", None) and request.form.get("phone", None) and request.form.get("div", None) and request.form.get("pas", None):
-			with open('students.csv', 'a', newline='') as f:
-				fieldnames = ['Student ID', 'First Name', 'Last Name', 'Phone Number', 'Div', 'Password']
-				thewriter = csv.DictWriter(f, fieldnames=fieldnames)
-				f.seek(0, 2)
-				if f.tell() == 0:
-					thewriter.writeheader()
-				thewriter.writerow({'Student ID': std_id, 'First Name': first_name, 'Last Name': last_name, 'Phone Number': phone, 'Div': div, 'Password': pas})
-				result = "New Student Added! ID number is: ", std_id
+			with open('students.csv', 'r', newline='') as fa:
+				reader = csv.reader(fa)
+				found = False
+				next(reader)
+				for row in reader:
+					if row[0] == std_id:
+						found = True
+				if found is True:
+					result3 = "Id is already taken, try new Id"
+				else:
+					with open('students.csv', 'a', newline='') as f:
+						fieldnames = ['Student ID', 'First Name', 'Last Name', 'Phone Number', 'Div', 'Password']
+						thewriter = csv.DictWriter(f, fieldnames=fieldnames)
+						f.seek(0, 2)
+						if f.tell() == 0:
+							thewriter.writeheader()
+						thewriter.writerow({'Student ID': std_id, 'First Name': first_name, 'Last Name': last_name, 'Phone Number': phone, 'Div': div, 'Password': pas})
+						result = "New Student Added! ID number is: ", std_id
 		else:
 			result2 = "something is missing, Try again"
-	return render_template("new_student.html", result=result, result2=result2)
+
+	return render_template("new_student.html", result=result, result2=result2, result3=result3)
 
 
 @student_api.route("/delete_std", methods=['GET', 'POST'])
@@ -52,7 +64,7 @@ def delete_std():
 			writer = csv.writer(writeFile)
 			writer.writerows(lines)
 
-		if found == True:
+		if found is True:
 			result = f"Student Id : {id_to_mark} is Deleted."
 		else:
 			result2 = f"Student Id : {id_to_mark}  Not Found."
