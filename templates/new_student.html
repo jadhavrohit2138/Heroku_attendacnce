@@ -9,16 +9,17 @@ div{text-align:center;}
     <title>Add new Student</title>
 </head>
 <body>
-    <form action="/new_student" method="post">
+    <form action="/new_student" method="post" onsubmit="return validation()">
         <h1>Student attendance</h1>
         <div>
         ID: <input type="number"  min="1000" max="9999" name="std_id" autocomplete="off"><br><br>
-        First Name: <input type="text" name="first_name" autocomplete="off"><br><br>
+        First Name: <input type="text" name="first_name" id="first" value="" autocomplete="off"><br><br>
         Last Name: <input type="text" name="last_name" autocomplete="off"><br><br>
-        Contact: <input type="number" name="phone" autocomplete="off"><br><br>
+        Contact: <input type="number" name="phone"  id="phone1" value="" autocomplete="off"><br><br>
         Div: <input type="text" name="div" autocomplete="off"><br><br>
         Password: <input type="password" name="pas"><br><br>
-        <button type="submit">Submit</button>
+            <button type="submit">Submit</button><br><br>
+            <span id="message"></span><br>
         </div>
     </form>
     {%if result%}
@@ -32,5 +33,39 @@ div{text-align:center;}
     <h2> {{result2}} </h2>
     {%endif%}
     </center>
+    {%if result3%}
+    <center>
+    <h2> {{result3}} </h2>
+    {%endif%}
+    </center>
+<script>
+    function validation()
+    {
+     var correct_way = /^[A-Za-z]+$/;
+     var a = document.getElementById("phone1").value;
+     var b = document.getElementById("first").value;
+
+
+     if (a==''){
+        document.getElementById("message").innerHTML='please fill';
+        return false
+     }
+     else if (a.length<10){
+        document.getElementById("message").innerHTML='Contact should be 10 digit number';
+        return false
+     }
+     else if (a.length>10){
+        document.getElementById("message").innerHTML='Contact should be 10 digit number';
+        return false
+     }
+     else if (b.match(correct_way))
+     true
+     else{
+        document.getElementById("message").innerHTML='Only character';
+        return false
+    }
+    }
+
+</script>
 </body>
 </html>

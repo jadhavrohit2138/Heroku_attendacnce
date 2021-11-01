@@ -1,7 +1,6 @@
 import csv
 import datetime
 from flask import Blueprint, request, render_template
-from prettytable import PrettyTable
 
 
 attendance_api = Blueprint("attendance_api", __name__)
@@ -219,22 +218,3 @@ def std_weekly_attendance():
 			output1 = f"Something is Wrong"
 
 	return render_template("std_weekly_attendance.html", output=output, output1=output1)
-
-
-@attendance_api.route("/total_report")
-def total_report():
-	a = open("attendance.csv", 'r')
-	a = a.readlines()
-	# Separating the Headers
-	l1 = a[0]
-	l1 = l1.split(',')
-	# headers for table
-	t = PrettyTable([l1[0], l1[1], l1[2], l1[3], l1[4]])
-	# Adding the data
-	for i in range(1, len(a)):
-		t.add_row(a[i].split(','))
-	code = t.get_html_string()
-	html_file = open('/home/rohit/PycharmProjects/Fynd_Api/templates/total_report.html', 'w')
-	html_file = html_file.write(code)
-	return render_template("total_report.html")
-
