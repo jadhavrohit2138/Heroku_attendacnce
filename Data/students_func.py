@@ -93,5 +93,7 @@ def list_student():
 
 	code = t.get_html_string()
 	html_file = open('/home/rohit/PycharmProjects/Fynd_Api/templates/list_student.html', 'w')
-	html_file = html_file.write(code)
+	html_file.write(code)
 	return render_template("list_student.html")
+
+# html_file =

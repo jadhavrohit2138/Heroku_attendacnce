@@ -77,7 +77,7 @@ def daily_attendance():
 		if found1 is True:
 			var12 = i
 
-	return render_template("daily_attendance.html", output=output, output1=output1, var11=var1, var12=var12)
+	return render_template("daily_attendance.html", output=output, output1=output1, var11=var11, var12=var12)
 
 
 # Daily attendance report of particular student
