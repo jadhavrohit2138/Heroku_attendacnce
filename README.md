@@ -10,7 +10,7 @@ specific id and password
 each student and class both.
 
 3. Add new student, total student list, and delete student
-from the list these are some addition features
+from the list these are some additional features
 
 
 ## Package Installation
