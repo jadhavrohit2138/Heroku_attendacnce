@@ -20,18 +20,19 @@ from the list these are some addition features
 
 
 
-##phase-1
-###Task-1
+## phase-1
+
+### Task-1
 * First step was creating 2 csv files one for Attendance
 and another one for Student data
 * Building logic and Modularity
 * Push the code in Git-hub
 
-###Task-2
+### Task-2
 * By using Flask create an Api
 * Display the result in html page using Jinja templating
 
-###Task-3
+### Task-3
 * Deploy the project using Heroku
 * Check all the featues are working or not in 
 deployment process
